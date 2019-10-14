@@ -11,6 +11,7 @@ pool:
 
 variables:
   solution: 'src/projectA'
+  packingproj: 'ClassLibraryA'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -26,7 +27,7 @@ steps:
   displayName: '.NET Pack $(solution)'
   inputs:
     command: 'pack'
-    projects: '$(solution)\*.csproj'
+    projects: '$(solution)/*$(packingproj)*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
     nobuild: true
     versioningScheme: 'off'
