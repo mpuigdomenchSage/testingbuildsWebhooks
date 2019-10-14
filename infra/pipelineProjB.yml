@@ -41,7 +41,7 @@ steps:
   displayName: '.NET Pack $(solution)/*$(packingproj)*.csproj'
   inputs:
     command: 'pack'
-    packagesToPack: '$(solution)/*$(packingproj)*.csproj'
+    packagesToPack: '$(solution)/**$(packingproj)*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
     nobuild: true
     versioningScheme: 'off'
