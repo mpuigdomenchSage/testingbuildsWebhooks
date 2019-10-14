@@ -10,14 +10,15 @@
 #   paths:
 #     include:
 #       - src/projectB/*
-
-pr:
+trigger:
   branches:
     include: 
       - master
   paths:
     include:
       - src/projectB/*
+    exclude:
+      - src/projectA/*
 
 pool:
   vmImage: 'windows-latest'
@@ -33,11 +34,11 @@ steps:
   displayName: '.NET Build $(solution)'
   inputs:
     command: 'build'
-    projects: '$(solution)'
+    workingDirectory: '$(solution)'
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: '.NET Pack $(solution)'
+  displayName: '.NET Pack $(solution)/*$(packingproj)*.csproj'
   inputs:
     command: 'pack'
     projects: '$(solution)/*$(packingproj)*.csproj'

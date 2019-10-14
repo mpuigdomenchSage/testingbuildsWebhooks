@@ -10,15 +10,16 @@
 #   paths:
 #     include:
 #       - src/projectA/*
-pr:
+trigger:
   branches:
     include: 
       - master
   paths:
     include:
       - src/projectA/*
+    exclude:
+      - src/projectB/*
     
-
 pool:
   vmImage: 'windows-latest'
 
