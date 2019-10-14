@@ -4,13 +4,19 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- develop
+  branches:
+    include:
+      - develop
+  paths:
+    include:
+      - src/projectB/*
 
 pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: 'src/projectB/**/*.sln'
+  solution: 'src/projectB'
+  packingproj: 'ClassLibraryB'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -26,7 +32,7 @@ steps:
   displayName: '.NET Pack $(solution)'
   inputs:
     command: 'pack'
-    projects: '$(solution)'
+    projects: '$(solution)/*$(packingproj)*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
     nobuild: true
     versioningScheme: 'off'
