@@ -38,7 +38,7 @@ steps:
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: '.NET Pack $(solution)/*$(packingproj)*.csproj'
+  displayName: '.NET Pack $(packingproj)'
   inputs:
     command: 'pack'
     packagesToPack: '$(packingproj)'
