@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ClassLibraryA" Version="1.0.0" />
+    <ProjectReference Include="..\ClassLibraryA\ClassLibraryA.csproj" />
   </ItemGroup>
 
 </Project>
