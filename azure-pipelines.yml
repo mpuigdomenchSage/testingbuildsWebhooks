@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: 'src/projectA/**/*.sln'
+  solution: 'src/projectA'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -19,14 +19,14 @@ steps:
   displayName: '.NET Build $(solution)'
   inputs:
     command: 'build'
-    projects: '$(solution)'
+    workingDirectory: '$(solution)'
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: '.NET Pack $(solution)'
   inputs:
     command: 'pack'
-    projects: '$(solution)'
+    workingDirectory: '$(solution)'
     arguments: '--configuration $(BuildConfiguration)'
     nobuild: true
     versioningScheme: 'off'
