@@ -10,7 +10,7 @@
 #   paths:
 #     include:
 #       - src/projectA/*
-trigger:
+pr:
   branches:
     include: 
       - master
